@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+
+</head>
+
+
+<body ng-app="blo">
+
+	<div class="container">
+	
+		<h1>PokésirTestTest</h1>
+		
+	<div ng-controller="myCtrl">	
+		<ul>
+  <li ng-repeat="x in myWelcome">
+	{{x.id}}
+  <!-- 
+    <input type="text" ng-model="user.name" />
+  <button ng-click="validate(user)">Valider</button>
+    <button ng-click="delete(user)">Supprimer</button>-->
+  </li>
+</ul>
+<!--Nouvel utilisateur :
+<input type="text" ng-model="newUserName" />
+<button ng-click="create(newUserName)">Créer</button>
+-->
+</div>
+</div>
+
+
+
+
+    <!-- Dependencies -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-resource.min.js"></script>
+
+    <!-- Pokedex app -->
+    <script src="js/Tes1.js"></script>
+
+
+</body>
+</html>
