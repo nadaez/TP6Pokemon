@@ -14,23 +14,112 @@
 	<div class="container">
 	
 		<h1>PokésirTestTest</h1>
-		
-	<div ng-controller="myCtrl">	
-		<ul>
-  <li ng-repeat="x in myWelcome">
-	{{x.id}}
-  <!-- 
-    <input type="text" ng-model="user.name" />
-  <button ng-click="validate(user)">Valider</button>
-    <button ng-click="delete(user)">Supprimer</button>-->
+
+
+
+
+          <div ng-controller="myCtrl">
+
+<label>Id :<input type="search" placeholder="search with Id" ng-model="searchId"/></label></br>
+<label>Name :<input type="search" placeholder="search with Name" ng-model="searchName"></label></br>
+    
+     <select ng-model="selected">
+      
+        <option ng-repeat="x in myWelcome | filter : searchId | filter : searchName" value="{{x.pokemon_species.name}}">
+           {{x.pokemon_species.name}}
+         </option>
+         
+    </select>
+                   
+                <br>
+
+                 <button ng-click="getInfo()">Go !</button><br>
+
+    
+    
+    <span>Vous avez choisi le pokémon :{{infowithoutLog}}</span>
+
+    
+</div>
+
+
+                    </div>
+                <br>   
+                <br>
+
+
+
+
+
+
+ <div ng-controller="PokemonCtrl">
+
+      - Taper ici l'id du pokémon : <input  type="text" ng-model="PokemonId"/> 
+       <br>
+
+           <button ng-click="x()">Get !</button><br>
+
+    -Voila les infos associés :
+        <br>
+         id: #{{pokemon_structure.id}}
+        <br>
+          Nom: <b>{{pokemon_structure.name}}</b>
+        <br>
+
+for(int i=0;i<pokemon_structure.moves[0].lenght;i++)
+
+      Attaques:{{pokemon_structure.moves[0].move.name}}
+
+
+
+
+    <br>
+
+
+
+
+   </div>
+
+   
+
+<!--
+
+for(int i=0;i<pokemon_structure.moves[0].lenght;i++)
+
+      Attaques:{{pokemon_structure.moves[0].move.name}}
+
+      du ctrl1 au service statique et du service vers ctrl2 je fais get
+  dans servie il fait set
+this.obj=undefined;
+
+
+
+
+
+
+
+Nouvel utilisateur :
+                <div ng-controller="myCtrl">    
+                <ul>
+            <li>
+      <input type="text" ng-model="idPokemon"/>
+                                                    
+
+
   </li>
 </ul>
-<!--Nouvel utilisateur :
+
+
+                        <span>  {{pokemon.objects[0].ineffective[0].name}}</span>
+
+                            <span>  {{pokemon.objects[1]}}</span>
+                        <span>  {{pokemon.objects[0].id}}</span>
+
+
 <input type="text" ng-model="newUserName" />
 <button ng-click="create(newUserName)">Créer</button>
 -->
-</div>
-</div>
+
 
 
 

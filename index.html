@@ -22,23 +22,29 @@
 	
 		<!-- Pokémon information
 | filter : searchId | filter : searchName
+  <!-- 
+  ng-repeat="x in myWelcome"
+  {{x.pokemon_species.name}}
+    <input type="text" ng-model="user.name" />
+  <button ng-click="validate(user)">Valider</button>
+    <button ng-click="delete(user)">Supprimer</button>-->
+<!--<button ng-click="afficher()"  (tap)="getInfo(x)" >Go !</button><br>-->
 
-<button ng-click="afficher()"  (tap)="getInfo(x)" >Go !</button><br>
 	<button ng-click="resourcedisplay()">Get</button><br>
 
-		-->
+	
 	
 <label>Name :<input type="search" placeholder="search with Id" ng-model="searchId"/></label></br>
 <label>Id :<input type="search" placeholder="search with Name" ng-model="searchName"></label></br>
 	
 	 <select ng-model="selected">
 	  
-		<option ng-repeat="x in pokemons | filter : searchId | filter : searchName" value="{{x.name}}">
-           {{x.name}}
+		<option ng-repeat="x in pokemons | filter : searchId | filter : searchName" value="{{x.pokemon_species.name}}">
+          {{x.pokemon_species.name}}
 		 </option>
 		 
     </select>
-	<button ng-click="getInfo()"   >Go !</button><br>
+	<button ng-click="getInfo()">Go !</button><br>
 
 	
 	
