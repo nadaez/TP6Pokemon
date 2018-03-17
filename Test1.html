@@ -26,14 +26,13 @@
      <select ng-model="selected">
       
         <option ng-repeat="x in myWelcome | filter : searchId | filter : searchName" value="{{x.pokemon_species.name}}">
-           {{x.pokemon_species.name}}
+            {{x.pokemon_species.name}}
          </option>
          
     </select>
                    
                 <br>
 
-                 <button ng-click="getInfo()">Go !</button><br>
 
     
     
@@ -54,22 +53,14 @@
 
  <div ng-controller="PokemonCtrl">
 
-      - Taper ici l'id du pokémon : <input  type="text" ng-model="PokemonId"/> 
-       <br>
-
-           <button ng-click="x()">Get !</button><br>
-
-    -Voila les infos associés :
-        <br>
+        <br> 
          id: #{{pokemon_structure.id}}
         <br>
           Nom: <b>{{pokemon_structure.name}}</b>
         <br>
-
-for(int i=0;i<pokemon_structure.moves[0].lenght;i++)
-
-      Attaques:{{pokemon_structure.moves[0].move.name}}
-
+        <ul ng-repeat="attaque in pokemon_structure.moves ">
+          <li> * {{attaque.move.name}} * </li> 
+        </ul>
 
 
 
@@ -89,7 +80,7 @@ for(int i=0;i<pokemon_structure.moves[0].lenght;i++)
       Attaques:{{pokemon_structure.moves[0].move.name}}
 
       du ctrl1 au service statique et du service vers ctrl2 je fais get
-  dans servie il fait set
+  dans servie il fait ;jlgigyhset
 this.obj=undefined;
 
 
