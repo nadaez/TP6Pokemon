@@ -20,10 +20,7 @@ Notre binôme triomphera
 ![](/pokepoke.jpg?raw=true)
 
 
-## Getting Started
 
-### Design
-La conception est dans le fichier "Design.md"
 ### Prerequisites
 
 ```
