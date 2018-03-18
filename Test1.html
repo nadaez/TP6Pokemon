@@ -1,129 +1,63 @@
 <!DOCTYPE html>
 <html>
 <head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
+  <meta charset="UTF-8">
+  <title></title>
 
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
+  <link rel="stylesheet" href="css/bootstrap.min.css"/>
 
 </head>
 
 
 <body ng-app="blo">
 
-	<div class="container">
-	
-		<h1>PokésirTestTest</h1>
+<div class="container">
+  <h1>PokésirTestTest</h1>
+  <div ng-controller="myCtrl" class="row">
 
+    <div class="form-group">
+      <label>Id :</label>
+      <input type="search" placeholder="search with Id" ng-model="searchId" class="form-control"/>
+    </div>
 
-
-
-          <div ng-controller="myCtrl">
-
-<label>Id :<input type="search" placeholder="search with Id" ng-model="searchId"/></label></br>
-<label>Name :<input type="search" placeholder="search with Name" ng-model="searchName"></label></br>
-    
-     <select ng-model="selected">
-      
+    <div class="form-group">
+      <label>Name :</label>
+      <input type="search" placeholder="search with Name" ng-model="searchName" class="form-control">
+    </div>
+    <div class="form-group">
+      <select ng-model="selected" class="form-control">
         <option ng-repeat="x in myWelcome | filter : searchId | filter : searchName" value="{{x.pokemon_species.name}}">
-            {{x.pokemon_species.name}}
-         </option>
-         
-    </select>
-                   
-                <br>
+          {{x.pokemon_species.name}}
+        </option>
+      </select>
+      <br>
+    </div>
 
-
-    
-    
     <span>Vous avez choisi le pokémon :{{infowithoutLog}}</span>
+  </div>
+  <div ng-controller="PokemonCtrl" class="row">
+    <div class="col-lg-6">
+      <h3>Id: # {{pokemon_structure.id}}</h3>
+      <h3>Nom: <b>{{pokemon_structure.name}} </b></h3>
 
-    
+      <ul ng-repeat="attaque in pokemon_structure.moves ">
+        <li> * {{attaque.move.name}} *</li>
+      </ul>
+    </div>
+    <div class="col-lg-6">
+      <h5>Image</h5>
+    </div>
+  </div>
 </div>
 
+<!-- Dependencies -->
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/angular.min.js"></script>
+<script src="js/angular-resource.min.js"></script>
 
-                    </div>
-                <br>   
-                <br>
-
-
-
-
-
-
- <div ng-controller="PokemonCtrl">
-
-        <br> 
-         id: #{{pokemon_structure.id}}
-        <br>
-          Nom: <b>{{pokemon_structure.name}}</b>
-        <br>
-        <ul ng-repeat="attaque in pokemon_structure.moves ">
-          <li> * {{attaque.move.name}} * </li> 
-        </ul>
-
-
-
-    <br>
-
-
-
-
-   </div>
-
-   
-
-<!--
-
-for(int i=0;i<pokemon_structure.moves[0].lenght;i++)
-
-      Attaques:{{pokemon_structure.moves[0].move.name}}
-
-      du ctrl1 au service statique et du service vers ctrl2 je fais get
-  dans servie il fait ;jlgigyhset
-this.obj=undefined;
-
-
-
-
-
-
-
-Nouvel utilisateur :
-                <div ng-controller="myCtrl">    
-                <ul>
-            <li>
-      <input type="text" ng-model="idPokemon"/>
-                                                    
-
-
-  </li>
-</ul>
-
-
-                        <span>  {{pokemon.objects[0].ineffective[0].name}}</span>
-
-                            <span>  {{pokemon.objects[1]}}</span>
-                        <span>  {{pokemon.objects[0].id}}</span>
-
-
-<input type="text" ng-model="newUserName" />
-<button ng-click="create(newUserName)">Créer</button>
--->
-
-
-
-
-
-    <!-- Dependencies -->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/angular.min.js"></script>
-    <script src="js/angular-resource.min.js"></script>
-
-    <!-- Pokedex app -->
-    <script src="js/Tes1.js"></script>
-
+<!-- Pokedex app -->
+<script src="js/Tes1.js"></script>
 
 </body>
 </html>
