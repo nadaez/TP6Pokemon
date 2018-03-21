@@ -44,11 +44,10 @@
  
 Exécuter l'appli du pokemon en ouvrant le fichier **‘Test1.html’** a partir d'un navigateur .
 
-- Le controleur il s'agit du fichier  **‘Tes1.js’** qu'on trouve dans le dossier js .<br>
+- Le controleur il s'agit du fichier  **‘pokedex.js’** qu'on trouve dans le dossier js .<br>
 
 - Le modele il s'agit du fichier **‘Test1.html’** . <br>
 
-- La directive est **‘pokedirective.js’** qu'on trouve aussi dans le dossier js <br>
 
 ## Recherche d'un Pokémon via son numéro
 ng-model et $scope sont les 2 directives qui permettent de faire le data-binding en angular (unidirectionnel ou bidirectionnel).
@@ -63,7 +62,7 @@ On commence par définir une balise qui correspond a une variable  en mettant la
          </option>
   </select>
 ```
- la 
+ 
 #### Controleur => Modele
 On l’a modifie dans le contrôleur associé à ce modèle en faisant :
   ```html
@@ -154,7 +153,6 @@ Pour encapsuler l’appel a $ressource on a défini un service de type  factory 
 
 ## Création d'une directive
 
-La directive est crée dans **‘pokedirective.js’**
 Nous avons créé une directive nommé **‘myCustomer’**, cette directive on l’a présenté de la façon suivante :
 
 
