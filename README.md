@@ -40,7 +40,13 @@
 ```
 
 ### Installation
+ Dans cec tp y'a pas d'installation a faire , il suffit d'avoir un éditeur de txt + un navigateur web
+ 
+Exécuter l'appli du pokemon en ouvrant le fichier **‘Test1.html’** 
 
+Le controleur il s'agit du fichier  **‘Tes1.js’** qu'on trouve dans le dossier js <br>
+
+La directive est **‘pokedirective.js’** qu'on trouve aussi dans le dossier js <br>
 
 ## Recherche d'un Pokémon via son numéro
 ng-model et $scope sont les 2 directives qui permettent de faire le data-binding en angular (unidirectionnel ou bidirectionnel).
