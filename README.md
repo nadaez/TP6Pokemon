@@ -62,7 +62,7 @@ On commence par définir une balise qui correspond a une variable  en mettant la
          </option>
   </select>
 ```
- la 
+ 
 #### Controleur => Modele
 On l’a modifie dans le contrôleur associé à ce modèle en faisant :
   ```html
