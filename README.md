@@ -40,13 +40,21 @@
 ```
 
 ### Installation
+ Dans cec tp y'a pas d'installation a faire , il suffit d'avoir un éditeur de txt + un navigateur web
+ 
+Exécuter l'appli du pokemon en ouvrant le fichier **‘Test1.html’** a partir d'un navigateur .
 
+- Le controleur il s'agit du fichier  **‘Tes1.js’** qu'on trouve dans le dossier js ..<br>
+
+- Le modele il s'agit du fichier **‘Test1.html’** . <br>
+
+- La directive est **‘pokedirective.js’** qu'on trouve aussi dans le dossier js <br>
 
 ## Recherche d'un Pokémon via son numéro
-ng-model et $scope sont 2 directives permettant de faire le data-binding (unidirectionnel ou biderectionnel).
+ng-model et $scope sont les 2 directives qui permettent de faire le data-binding en angular (unidirectionnel ou bidirectionnel).
 
-### Du Modele => Controleur => Modele (biderctionnel)	 :
-On commence par définir une balise qui correspond a une variable en mettant :
+### Du Modele => Controleur => Modele (bidirctionnel)	 :
+On commence par définir une balise qui correspond a une variable  en mettant la valeur dans ng-model , dans l'ex suivant on a associé "selected" a la balise de selection  :
 
 ```html
   <select ng-model="selected" class="form-control">
@@ -55,14 +63,14 @@ On commence par définir une balise qui correspond a une variable en mettant :
          </option>
   </select>
 ```
- 
+ la 
 #### Controleur => Modele
 On l’a modifie dans le contrôleur associé à ce modèle en faisant :
   ```html
   <div ng-controller="myCtrl" class="row">
   ```
   
-Et côté modèle :
+Controleur dans lequel qon va modifier la valeur du var "selected" :
  ```javascript
  pokeApp3.controller('myCtrl', function ($scope, $http, Pokemon, PokService) {
   
@@ -72,7 +80,7 @@ Et côté modèle :
 ```
 
 
-La modification se fait comme suite :
+La modification se fait comme ceci :
 ```javascript
   $scope.selected= ‘6’;
 ```
@@ -123,7 +131,7 @@ Pour encapsuler l’appel a $ressource on a défini un service de type  factory 
   $scope.pokemon_structure = Pokemon.get({id: PokService.getId()});
   ```
 
--	La différence majeure entre Service et factory est la syntaxe qui est différente : factory retourne ce que la fonction retourne, et avec  un service y’a pas de return .
+-	La différence majeure entre Service et factory est la syntaxe  : factory retourne ce que la fonction retourne, alors qu'avec un service y’a pas de return .
 
 -	Un service  que ça soit de type  service ou de type factory peut être associé à plusieurs contrôleurs dans la même application, il suffit de l’ajouter dans la fonction du contrôleur de la façon suivante :
     
@@ -136,7 +144,7 @@ Pour encapsuler l’appel a $ressource on a défini un service de type  factory 
 
 
 ## Communication entre contrôleurs
--	Le service **$watch** est un service qui permet de mettre à jour (l'élément Observateur ) l’affichage du Pokémon avec ses informations  lors du changement du Pokémon recherché (Observer).
+-	Le service **$watch** est un service qui permet de mettre à jour (l'élément Observateur ) l’affichage du Pokémon avec ses informations a chaque fois qu'on change du Pokémon recherché (Observer).
  ```javascript
    $scope.$watch('selected', function () {
     PokService.setId($scope.selected);
@@ -146,6 +154,7 @@ Pour encapsuler l’appel a $ressource on a défini un service de type  factory 
 
 ## Création d'une directive
 
+La directive est crée dans **‘pokedirective.js’**
 Nous avons créé une directive nommé **‘myCustomer’**, cette directive on l’a présenté de la façon suivante :
 
 
@@ -161,7 +170,7 @@ ainsi que les éléments de bases pour créer un Pokédex à cette adresse :
 
 ## Auteurs
 * **Nabé N. Diarrassouba** (https://github.com/diarranabe)
-* **Nada Ez Zirray** (https://github.com/nadaez)
+* **Nada Ez Ziraiy** (https://github.com/nadaez)
 * **Charles Oliviers Maud** (https://github.com/maudmcok)
 
 ## License
