@@ -57,7 +57,7 @@ On commence par définir une balise qui correspond a une variable  en mettant la
 
 ```html
   <select ng-model="selected" class="form-control">
-        <option ng-repeat="x in myWelcome | filter : searchId | filter : searchName" value="{{x.pokemon_species.name}}">
+        <option ng-repeat="x in allPokemons | filter : searchId | filter : searchName" value="{{x.pokemon_species.name}}">
           {{x.pokemon_species.name}}
          </option>
   </select>
@@ -66,12 +66,12 @@ On commence par définir une balise qui correspond a une variable  en mettant la
 #### Controleur => Modele
 On l’a modifie dans le contrôleur associé à ce modèle en faisant :
   ```html
-  <div ng-controller="myCtrl" class="row">
+  <div ng-controller="PokemonCtrl1" class="row">
   ```
   
 Controleur dans lequel qon va modifier la valeur du var "selected" :
  ```javascript
- pokeApp3.controller('myCtrl', function ($scope, $http, Pokemon, PokService) {
+ pokeApp3.controller('PokemonCtrl1', function ($scope, $http, Pokemon, PokService) {
   
   // Manipulation de la variable ici
 };
@@ -91,18 +91,18 @@ Pour afficher la valeur:
 
 ### Du Contrôleur => Modele (uniderctionnel)
 ```javascript
-   $scope.myWelcome = [];
+   $scope.allPokemons = [];
   $http.get("https://pokeapi.co/api/v2/pokedex/1").then(function (response) {
-    $scope.myWelcome = response.data.pokemon_entries;
+    $scope.allPokemons = response.data.pokemon_entries;
   }, function (response) {
-    $scope.myWelcome = response.statusText;
+    $scope.allPokemons = response.statusText;
 
   });
   ```
   
 Et afficher sa valeur dans le modèle en faisant :
 ```html
-  {{myWelcome}}
+  {{allPokemons}}
 ```
 
 ## Accès à l’API :
@@ -153,18 +153,16 @@ Pour encapsuler l’appel a $ressource on a défini un service de type  factory 
 
 ## Création d'une directive
 
-Nous avons créé une directive nommé **‘myCustomer’**, cette directive on l’a présenté de la façon suivante :
-
-
-
-### Professeur Chen
+Nous avons créé une directive nommé **‘pokedir’**, cette directive on l’a présenté de la façon suivante :
+```javascript
+pokemonApp.directive('pokedir', function () {
+  return {
+    restrict: 'AEC',
+    templateUrl: "pokeDirective.html"
+  };
+});
 ```
-Pour vous aider dans votre quète, 
-je vous est laissé des instructions 
-ainsi que les éléments de bases pour créer un Pokédex à cette adresse :
-```
-[Professeur Chen Github](https://github.com/barais/teaching-jxs-tp5) 
-(l'utilisation d'une bicyclette est conseillée pour s'y rendre plus vite).
+
 
 ## Auteurs
 * **Nabé N. Diarrassouba** (https://github.com/diarranabe)
