@@ -38,10 +38,6 @@ pokemonApp.service('PokService', ['$resource',
     };
   }]);
 
-//quand il charge html au  debut il va au controleur de js et ca marche pas au debut il est vide cqr onq pqs selectionne selected du coup apres quqnd il va appeler
-//qun lutilisateur selctionne il va appele setid et set id appele change ol vq fpuiller dqns le code pour trouver sa definition et change c une fct aui est definie
-// dans le 2eme controleur du coup il lqppele et il nous initiqlise lq vqleur
-
 pokemonApp.controller('myCtrl', function ($scope, $http, Pokemon, PokService) {
 
   $scope.myWelcome = [];
@@ -60,7 +56,6 @@ pokemonApp.controller('myCtrl', function ($scope, $http, Pokemon, PokService) {
 
 //Controleur
 pokemonApp.controller('PokemonCtrl', function ($scope, Pokemon, PokService) {
-  //des que je clique sur le button il me linstancie obligatoirement du coup je le recupere ensuite, avant il met undefined car il las pas creer obligatoireùent
 
 // mettre à jour les information des pokémons en modifiant le l
   PokService.setChange(function () {
@@ -70,7 +65,6 @@ pokemonApp.controller('PokemonCtrl', function ($scope, Pokemon, PokService) {
 
 });
 
-//$scope.pokemon_structure = Pokemon.get({ id : $scope.PokemonId });}
 
 
 
