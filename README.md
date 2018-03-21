@@ -40,11 +40,11 @@
 ```
 
 ### Installation
- Dans cec tp y'a pas d'installation a faire , il suffit d'avoir un éditeur de txt + un navigateur web
+ Dans ce tp y'a pas d'installation a faire , il suffit d'avoir un éditeur de txt + un navigateur web.
  
 Exécuter l'appli du pokemon en ouvrant le fichier **‘Test1.html’** a partir d'un navigateur .
 
-- Le controleur il s'agit du fichier  **‘Tes1.js’** qu'on trouve dans le dossier js ..<br>
+- Le controleur il s'agit du fichier  **‘Tes1.js’** qu'on trouve dans le dossier js .<br>
 
 - Le modele il s'agit du fichier **‘Test1.html’** . <br>
 
