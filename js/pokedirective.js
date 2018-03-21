@@ -5,8 +5,8 @@ angular.module('docsTemplateUrlDirective', [])
       address: '1600 Amphitheatre'
     };
   }])
-  .directive('poke-dir', function() {
+  .directive('poked', function() {
     return {
-      templateUrl: '../pokeDirective.html'
+      templateUrl: 'pokeDirective.html'
     };
   });

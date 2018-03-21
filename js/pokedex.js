@@ -66,6 +66,6 @@ pokemonApp.controller('PokemonCtrl', function ($scope, Pokemon, PokService) {
 pokemonApp.directive('pokedir', function () {
   return {
     restrict: 'AEC',
-    templateUrl: '../pokeDirective.html'
+    templateUrl: "pokeDirective.html"
   };
 });

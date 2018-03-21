@@ -9,53 +9,7 @@
 </head>
 <body ng-app="poke">
 
-
-<div class="container">
-  <h1>Pokésir</h1>
-  <div class="row">
-    <div class="col-lg-6">
-      <div ng-controller="myCtrl" class="row">
-
-        <div class="form-group">
-          <label>Id :</label>
-          <input type="search" placeholder="search with Id" ng-model="searchId" class="form-control"/>
-        </div>
-
-        <div class="form-group">
-          <label>Name :</label>
-          <input type="search" placeholder="search with Name" ng-model="searchName" class="form-control">
-        </div>
-        <div class="form-group">
-          <select ng-model="selectedPoke" class="form-control">
-            <option ng-repeat="x in allPokemons | filter : searchId | filter : searchName"
-                    value="{{x.pokemon_species.name}}">
-              {{x.pokemon_species.name}}
-            </option>
-          </select>
-        </div>
-
-        <span>Vous avez choisi le pokémon :{{infowithoutLog}}</span>
-      </div>
-    </div>
-
-    <div class="col-lg-6">
-      <div ng-controller="PokemonCtrl" class="row">
-        <div class="col-lg-6">
-          <h3>Id: # {{pokemon_structure.id}}</h3>
-          <h3>Nom: <b>{{pokemon_structure.name}} </b></h3>
-          <h4>Liste des attaques </h4>
-          <ul ng-repeat="attaque in pokemon_structure.moves ">
-            <li> * {{attaque.move.name}} *</li>
-          </ul>
-        </div>
-        <div class="col-lg-6">
-          <h5>Image</h5>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</div>
+<pokedir></pokedir>
 
 <!-- Dependencies -->
 <script src="js/jquery.min.js"></script>
