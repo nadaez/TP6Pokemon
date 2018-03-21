@@ -1,21 +1,19 @@
-// require('pokeDirective.html');
 var pokemonApp = angular.module('poke', ['ngResource']);
 
-// With this you can inject POKEAPI url wherever you want
 pokemonApp.constant('POKEAPI', 'https://pokeapi.co');
 
 pokemonApp.config(['$resourceProvider', function ($resourceProvider) {
   $resourceProvider.defaults.stripTrailingSlashes = false;
 }]);
 
-//ServicePokemon
+//Service Pokemon
 pokemonApp.factory('Pokemon', ['$resource',
   function ($resource) {
     return $resource("https://pokeapi.co/api/v2/pokemon/:id/", {id: '@id'});
   }]
 );
 
-//ServicePokemon1 : definit les setters et getters pr faire la communication
+//PokService : definit les setters et getters pr faire la communication
 pokemonApp.service('PokService', ['$resource',
   function ($resource) {
     this.setId = function (idp) {
@@ -39,8 +37,7 @@ pokemonApp.service('PokService', ['$resource',
     };
   }]);
 
-pokemonApp.controller('myCtrl', function ($scope, $http, Pokemon, PokService) {
-
+pokemonApp.controller('PokemonCtrl1', function ($scope, $http, Pokemon, PokService) {
   $scope.allPokemons = [];
 
   $http.get("https://pokeapi.co/api/v2/pokedex/1").then(function (response) {
@@ -50,22 +47,15 @@ pokemonApp.controller('myCtrl', function ($scope, $http, Pokemon, PokService) {
     console.log("details id");
   });
 
-  $scope.$watch('selectedPoke', function () {
-    PokService.setId($scope.selectedPoke);
+  $scope.$watch('selected', function () {
+    PokService.setId($scope.selected);
   })
 });
 
 //Controleur
-pokemonApp.controller('PokemonCtrl', function ($scope, Pokemon, PokService) {
+pokemonApp.controller('PokemonCtrl2', function ($scope, Pokemon, PokService) {
 
   PokService.setChange(function () {
     $scope.pokemon_structure = Pokemon.get({id: PokService.getId()});
   });
-});
-
-pokemonApp.directive('pokedir', function () {
-  return {
-    restrict: 'AEC',
-    templateUrl: "pokeDirective.html"
-  };
 });
