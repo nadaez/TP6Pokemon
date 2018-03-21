@@ -1,6 +1,4 @@
-# teaching-jxs-tp5
-TP5 : AngularJS
-# TP6Pokemon
+# TP6 Pokedex (AngularJS)
 ```
                                        Un jour je serai le meilleur codeur
                                        
@@ -24,87 +22,131 @@ TP5 : AngularJS
 ```
 ![](/pokepoke.jpg?raw=true)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-TP 6 de SIR: Pokedex
-Goals :
+## Objectifs :
 1.	Manipuler les variable avec $scope
 2.	Tester la liaison grâce au ng-model, 
 3.	Création d'un contrôleur et parcourir une liste avec ng-repeat
 4.	Tester les services  $http, $resource et factory (creation d'un service)
 5.	Communication entre contrôleurs a l’aide  de $watch
 6.	Création d'une directive
-Recherche d'un Pokémon via son numéro
-Y’a ng-model , $scope c’est 2 directives permettent de faire le data-binding (unidirectionnel ou biderectionnel).
-Du Modele => Controleur => Modele (biderctionnel)	 :
+
+
+### Prerequisites
+
+```txt
+ Un navigateur WEB (Chrome)  -
+ Un IDE (WebStorm) 
+
+```
+
+### Installation
+
+
+## Recherche d'un Pokémon via son numéro
+ng-model et $scope sont 2 directives permettant de faire le data-binding (unidirectionnel ou biderectionnel).
+
+### Du Modele => Controleur => Modele (biderctionnel)	 :
 On commence par définir une balise qui correspond a une variable en mettant :
+
+```html
+  <select ng-model="selected" class="form-control">
+        <option ng-repeat="x in myWelcome | filter : searchId | filter : searchName" value="{{x.pokemon_species.name}}">
+          {{x.pokemon_species.name}}
+         </option>
+  </select>
+```
  
-Controleur => Modele
-On l’as modifie dans le contrôleur associé à ce modèle en faisant :
+#### Controleur => Modele
+On l’a modifie dans le contrôleur associé à ce modèle en faisant :
+  ```html
+  <div ng-controller="myCtrl" class="row">
+  ```
   
-Et coté controleur :
- 
+Et côté modèle :
+ ```javascript
+ pokeApp3.controller('myCtrl', function ($scope, $http, Pokemon, PokService) {
+  
+  // Manipulation de la variable ici
+};
 
-La modification par ex :
-$scope.selected= ‘6’ .
-Et à la fin on affiche la valeur coté modele :
-{{selected}}
-Du Contrôleur => Modele (uniderctionnel)
- 
+```
+
+
+La modification se fait comme suite :
+```javascript
+  $scope.selected= ‘6’;
+```
+
+Pour afficher la valeur:
+```html
+  {{selected}}
+```
+
+### Du Contrôleur => Modele (uniderctionnel)
+```javascript
+   $scope.myWelcome = [];
+  $http.get("https://pokeapi.co/api/v2/pokedex/1").then(function (response) {
+    $scope.myWelcome = response.data.pokemon_entries;
+  }, function (response) {
+    $scope.myWelcome = response.statusText;
+
+  });
+  ```
+  
 Et afficher sa valeur dans le modèle en faisant :
-{{myWelcome}}
+```html
+  {{myWelcome}}
+```
 
-Accès à l’API :
+## Accès à l’API :
 -	L’accès se fait à travers des services $http
 -	On a récupéré la liste des Pokémons en utilisant le service $http
-Pour la récupération des informations sur un Pokémon particulier on utilise le service $ressource car elle vous permet d'interagir avec les sources de données API Rest car il implémente des requêtes de bases  (get, save, query, remove, delete) .
+
+Pour la récupération des informations sur un Pokémon particulier on utilise le service **$ressource** car elle vous permet d'interagir avec les sources de données API Rest qui implémente les requêtes de bases  (get, save, query, remove, delete) .
+```javascript
 $resource("http://pokeapi.co/api/v1/type/:id/")
+```
 
-Pour encapsuler l’appel a $ressource on a défini un servicede type  factory ‘Pokemon ‘
-	La fonction Service Factory génère l'objet ou la fonction qui représente le service pour le reste de l'application.
- 
+Pour encapsuler l’appel a $ressource on a défini un service de type  factory **‘Pokemon ‘**
+-	La fonction Service Factory génère l'objet ou la fonction qui représente le service pour le reste de l'application.
 
-	Dans le service  ‘PokService’ on a créé des getters et setters pour mettre à jour l’id du Pokémon récupéré par le factory ‘Pokemon’ comme ceci :
- 
-	La différence majeure entre Service et factory est la syntaxe qui est différente : factory retourne ce que la fonction retourne, et avec  un service y’a pas de return .
+```javascript
+  pokeApp3.factory('Pokemon', ['$resource',
+    function ($resource) {
+      return $resource("https://pokeapi.co/api/v2/pokemon/:id/", {id: '@id'});
+    }]
+  );
+```
 
-	Un service  que ça soit de type  service ou de type factory peut être associé à plusieurs contrôleurs dans la même application, il suffit de l’ajouter dans la fonction du contrôleur de la façon suivante :
- 
+-	Dans le service  **‘PokService’** on a créé des getters et setters pour mettre à jour l’id du Pokémon récupéré par le factory **‘Pokemon’** comme ceci :
+   ```javascript
+  $scope.pokemon_structure = Pokemon.get({id: PokService.getId()});
+  ```
 
+-	La différence majeure entre Service et factory est la syntaxe qui est différente : factory retourne ce que la fonction retourne, et avec  un service y’a pas de return .
 
-
-
-Communication entre contrôleurs
--	Le service $watch est un service qui permet de mettre à jour (l'élément Observateur ) l’affichage du Pokémon avec ses informations  lors du changement du Pokémon recherché (Observer).
- 
-
-
-Création d'une directive
-
-Nous avons créé une nommé ‘myCustomer’, cette directive on l’a présenté de la façon suivante :
-
- 
-
-
-
+-	Un service  que ça soit de type  service ou de type factory peut être associé à plusieurs contrôleurs dans la même application, il suffit de l’ajouter dans la fonction du contrôleur de la façon suivante :
+    
+```javascript
+  pokeApp3.controller('PokemonCtrl', function ($scope, Pokemon, PokService) {
+  
+  }
+```
 
 
+
+## Communication entre contrôleurs
+-	Le service **$watch** est un service qui permet de mettre à jour (l'élément Observateur ) l’affichage du Pokémon avec ses informations  lors du changement du Pokémon recherché (Observer).
+ ```javascript
+   $scope.$watch('selected', function () {
+    PokService.setId($scope.selected);
+  });
+  ```
+
+
+## Création d'une directive
+
+Nous avons créé une directive nommé **‘myCustomer’**, cette directive on l’a présenté de la façon suivante :
 
 
 
@@ -117,20 +159,7 @@ ainsi que les éléments de bases pour créer un Pokédex à cette adresse :
 [Professeur Chen Github](https://github.com/barais/teaching-jxs-tp5) 
 (l'utilisation d'une bicyclette est conseillée pour s'y rendre plus vite).
 
-### Prerequisites
-
-```
- Navigateur WEB (Chrome)  -
- Bloc note 
-
-```
-
-### Installation
-
-
-
 ## Auteurs
-
 * **Nabé N. Diarrassouba** (https://github.com/diarranabe)
 * **Nada Ez Zirray** (https://github.com/nadaez)
 * **Charles Oliviers Maud** (https://github.com/maudmcok)
