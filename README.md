@@ -118,11 +118,11 @@ Pour encapsuler l’appel a $ressource on a défini un service de type  factory 
 -	La fonction Service Factory génère l'objet ou la fonction qui représente le service pour le reste de l'application.
 
 ```javascript
-  pokeApp3.factory('Pokemon', ['$resource',
-    function ($resource) {
-      return $resource("https://pokeapi.co/api/v2/pokemon/:id/", {id: '@id'});
-    }]
-  );
+pokemonApp.factory('Pokemon', ['$resource',
+  function ($resource) {
+    return $resource("https://pokeapi.co/api/v2/pokemon/:id/", {id: '@id'});
+  }]
+);
 ```
 
 -	Dans le service  **‘PokService’** on a créé des getters et setters pour mettre à jour l’id du Pokémon récupéré par le factory **‘Pokemon’** comme ceci :
@@ -135,9 +135,11 @@ Pour encapsuler l’appel a $ressource on a défini un service de type  factory 
 -	Un service  que ça soit de type  service ou de type factory peut être associé à plusieurs contrôleurs dans la même application, il suffit de l’ajouter dans la fonction du contrôleur de la façon suivante :
     
 ```javascript
-  pokeApp3.controller('PokemonCtrl', function ($scope, Pokemon, PokService) {
-  
-  }
+pokemonApp.controller('PokemonCtrl2', function ($scope, Pokemon, PokService) {
+  PokService.setChange(function () {
+    $scope.pokemon_structure = Pokemon.get({id: PokService.getId()});
+  });
+});
 ```
 
 
