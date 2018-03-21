@@ -1,18 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-  <meta charset="UTF-8">
-  <title></title>
-
-  <link rel="stylesheet" href="css/bootstrap.min.css"/>
-
-</head>
-
-
-<body ng-app="blo">
 
 <div class="container">
-  <h1>PokésirTestTest</h1>
+  <h1>Pokésir</h1>
   <div class="row">
     <div class="col-lg-6">
       <div ng-controller="myCtrl" class="row">
@@ -27,8 +15,8 @@
           <input type="search" placeholder="search with Name" ng-model="searchName" class="form-control">
         </div>
         <div class="form-group">
-          <select ng-model="selected" class="form-control">
-            <option ng-repeat="x in myWelcome | filter : searchId | filter : searchName"
+          <select ng-model="selectedPoke" class="form-control">
+            <option ng-repeat="x in allPokemons | filter : searchId | filter : searchName"
                     value="{{x.pokemon_species.name}}">
               {{x.pokemon_species.name}}
             </option>
@@ -57,15 +45,3 @@
     </div>
   </div>
 </div>
-
-<!-- Dependencies -->
-<script src="js/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/angular.min.js"></script>
-<script src="js/angular-resource.min.js"></script>
-
-<!-- Pokedex app -->
-<script src="js/Tes1.js"></script>
-
-</body>
-</html>

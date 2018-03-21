@@ -1,84 +1,71 @@
 <!DOCTYPE html>
 <html>
 <head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
+  <meta charset="UTF-8">
+  <title></title>
 
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
+  <link rel="stylesheet" href="css/bootstrap.min.css"/>
 
 </head>
-<body ng-app="pokedex">
+<body ng-app="poke">
 
-	<div class="container">
-		<h1>Pokésir</h1>
 
-		<!-- Search -->
-		<div ng-controller="ExampleController">
+<div class="container">
+  <h1>Pokésir</h1>
+  <div class="row">
+    <div class="col-lg-6">
+      <div ng-controller="myCtrl" class="row">
 
- <!-- <input ng-model="id" ng-pattern="/^\d+$/" name="anim" class="my-input"
-         aria-describedby="inputDescription" />
-		 <h1>{{id}}
-		 </h1>-->
-	
-		<!-- Pokémon information
-| filter : searchId | filter : searchName
-  <!-- 
-  ng-repeat="x in myWelcome"
-  {{x.pokemon_species.name}}
-    <input type="text" ng-model="user.name" />
-  <button ng-click="validate(user)">Valider</button>
-    <button ng-click="delete(user)">Supprimer</button>-->
-<!--<button ng-click="afficher()"  (tap)="getInfo(x)" >Go !</button><br>-->
+        <div class="form-group">
+          <label>Id :</label>
+          <input type="search" placeholder="search with Id" ng-model="searchId" class="form-control"/>
+        </div>
 
-	<button ng-click="resourcedisplay()">Get</button><br>
+        <div class="form-group">
+          <label>Name :</label>
+          <input type="search" placeholder="search with Name" ng-model="searchName" class="form-control">
+        </div>
+        <div class="form-group">
+          <select ng-model="selectedPoke" class="form-control">
+            <option ng-repeat="x in allPokemons | filter : searchId | filter : searchName"
+                    value="{{x.pokemon_species.name}}">
+              {{x.pokemon_species.name}}
+            </option>
+          </select>
+        </div>
 
-	
-	
-<label>Name :<input type="search" placeholder="search with Id" ng-model="searchId"/></label></br>
-<label>Id :<input type="search" placeholder="search with Name" ng-model="searchName"></label></br>
-	
-	 <select ng-model="selected">
-	  
-		<option ng-repeat="x in pokemons | filter : searchId | filter : searchName" value="{{x.pokemon_species.name}}">
-          {{x.pokemon_species.name}}
-		 </option>
-		 
-    </select>
-	<button ng-click="getInfo()">Go !</button><br>
+        <span>Vous avez choisi le pokémon :{{infowithoutLog}}</span>
+      </div>
+    </div>
 
-	
-	
-	<span>">Vous avez choisi le pokémon :{{infowithoutLog}}</span>
-</br>
+    <div class="col-lg-6">
+      <div ng-controller="PokemonCtrl" class="row">
+        <div class="col-lg-6">
+          <h3>Id: # {{pokemon_structure.id}}</h3>
+          <h3>Nom: <b>{{pokemon_structure.name}} </b></h3>
+          <h4>Liste des attaques </h4>
+          <ul ng-repeat="attaque in pokemon_structure.moves ">
+            <li> * {{attaque.move.name}} *</li>
+          </ul>
+        </div>
+        <div class="col-lg-6">
+          <h5>Image</h5>
+        </div>
+      </div>
 
-		</div>
+    </div>
+  </div>
+</div>
 
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		<!--<div ng-controller="pokeServiceController">
-		<h3>partie 2: affichage des information en utilisant un service</h3>
-		id: {{pake.id}}</br> nom: {{pake.name}} </br>
-</div>-->
-		
-		
-	</div>
+<!-- Dependencies -->
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/angular.min.js"></script>
+<script src="js/angular-resource.min.js"></script>
 
-    <!-- Dependencies -->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/angular.min.js"></script>
-    <script src="js/angular-resource.min.js"></script>
-
-    <!-- Pokedex app -->
-    <script src="js/pokedex.js"></script>
-
+<!-- Pokedex app -->
+<script src="js/pokedex.js"></script>
+<script src="js/pokedirective.js"></script>
 
 </body>
 </html>
