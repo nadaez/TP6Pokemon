@@ -40,13 +40,13 @@
 ```
 
 ### Installation
- Dans ce tp y'a pas d'installation a faire , il suffit d'avoir un éditeur de txt + un navigateur web.
+ Dans ce TP il n'y a pas d'installation à faire , il suffit d'avoir un éditeur de texte et un navigateur web.
  
-Exécuter l'appli du pokemon en ouvrant le fichier **‘Test1.html’** a partir d'un navigateur .
+Exécuter l'appli du pokemon en ouvrant le fichier **‘index.html’** a partir d'un navigateur .
 
 - Le controleur il s'agit du fichier  **‘pokedex.js’** qu'on trouve dans le dossier js .<br>
 
-- Le modele il s'agit du fichier **‘Test1.html’** . <br>
+- Le modele il s'agit du fichier **‘index.html’** . <br>
 
 
 ## Recherche d'un Pokémon via son numéro
